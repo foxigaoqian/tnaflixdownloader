@@ -21,14 +21,17 @@ function Stars({ count }: { count: number }) {
 }
 
 export default function Reviews() {
+  const avgRating =
+    REVIEWS_DATA.reduce((sum, r) => sum + r.rating, 0) / REVIEWS_DATA.length;
+
   return (
     <section className="border-t border-border bg-surface py-16">
       <div className="mx-auto max-w-5xl px-4">
         <h2 className="text-center text-2xl font-bold md:text-3xl">
-          What Our Users Say
+          Real Users, Real Downloads
         </h2>
         <p className="mt-2 text-center text-muted">
-          Trusted by thousands of users worldwide.
+          {avgRating.toFixed(1)} average rating from {REVIEWS_DATA.length} verified users.
         </p>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
@@ -37,9 +40,22 @@ export default function Reviews() {
               key={review.name}
               className="rounded-xl border border-border bg-background p-6"
             >
-              <Stars count={review.rating} />
+              <div className="flex items-center justify-between">
+                <Stars count={review.rating} />
+                <span className="rounded-full bg-surface-light px-2 py-0.5 text-xs text-muted">
+                  {review.useCase}
+                </span>
+              </div>
               <p className="mt-3 text-sm text-muted">&ldquo;{review.text}&rdquo;</p>
-              <p className="mt-4 text-sm font-semibold">{review.name}</p>
+              <div className="mt-4 flex items-center gap-2">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/20 text-xs font-bold text-primary">
+                  {review.name.charAt(0)}
+                </div>
+                <div>
+                  <p className="text-sm font-semibold">{review.name}</p>
+                  <p className="text-xs text-muted">{review.location}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>

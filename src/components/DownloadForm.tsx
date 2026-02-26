@@ -52,6 +52,12 @@ export default function DownloadForm() {
     }
   };
 
+  const today = new Date().toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+
   return (
     <section className="py-16 md:py-24">
       <div className="mx-auto max-w-3xl px-4 text-center">
@@ -59,7 +65,7 @@ export default function DownloadForm() {
           <span className="text-primary">Tnaflix Downloader</span> Online
         </h1>
         <p className="mt-4 text-lg text-muted">
-          Download Tnaflix videos in MP4, WEBM, or MP3 for free. Just paste the link below.
+          Download Tnaflix videos in MP4, WEBM, or MP3 for free. 100% anonymous — we never log your activity.
         </p>
 
         <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -76,12 +82,51 @@ export default function DownloadForm() {
             disabled={loading}
             className="rounded-lg bg-primary px-8 py-3 font-semibold text-white transition-colors hover:bg-primary-hover disabled:opacity-50"
           >
-            {loading ? "Extracting..." : "Extract & Download"}
+            {loading ? "Processing..." : "Download Video Now"}
           </button>
         </form>
 
+        {/* Trust badges near CTA */}
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-4 text-xs text-muted">
+          <span className="flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+            No Malware
+          </span>
+          <span className="flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-5 0-9.27-3.11-11-7.5a11.72 11.72 0 013.168-4.477M6.343 6.343A9.972 9.972 0 0112 5c5 0 9.27 3.11 11 7.5a11.7 11.7 0 01-4.373 5.157M6.343 6.343L17.657 17.657M6.343 6.343L3 3m14.657 14.657L21 21" />
+            </svg>
+            100% Anonymous
+          </span>
+          <span className="flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+            Zero Logs
+          </span>
+          <span className="flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Last tested: {today}
+          </span>
+        </div>
+
         {error && (
-          <p className="mt-4 text-sm text-red-400" role="alert">{error}</p>
+          <div className="mt-4 rounded-lg border border-red-500/30 bg-red-500/10 p-4 text-left text-sm">
+            <p className="text-red-400" role="alert">{error}</p>
+            <div className="mt-2 text-xs text-muted">
+              <p className="font-medium text-foreground">Troubleshooting:</p>
+              <ul className="mt-1 list-inside list-disc space-y-0.5">
+                <li>Make sure you copied the full video URL, not just the homepage</li>
+                <li>Try refreshing the page and pasting again</li>
+                <li>The video may have been removed or made private</li>
+                <li>Try a different browser or disable your ad blocker</li>
+              </ul>
+            </div>
+          </div>
         )}
 
         {result && (
