@@ -1,0 +1,40 @@
+# TnaDown - Tnaflix Downloader
+
+> Free online tool to download Tnaflix videos in MP4, WEBM, or MP3 format.
+
+## About
+
+TnaDown (tnaflixdownloader.site) is a free, browser-based video downloader for Tnaflix. No registration or software installation required. Works on desktop and mobile devices.
+
+## Features
+
+- Download Tnaflix videos in MP4, WEBM, or MP3
+- Multiple quality options: 480p, 720p, 1080p
+- No registration required
+- Mobile friendly — works on any device
+- Fast and secure with HTTPS encryption
+- Completely free with no daily limits
+
+## How It Works
+
+1. Copy the video URL from Tnaflix
+2. Paste the URL into the input field on our homepage
+3. Click "Extract & Download"
+4. Choose your preferred format and quality
+5. Click Download to save the video
+
+## Pages
+
+- [Home](https://tnaflixdownloader.site/): Main download tool
+- [Tutorial](https://tnaflixdownloader.site/tutorial): Step-by-step download guide
+- [Contact](https://tnaflixdownloader.site/contact): Contact information and legal notice
+- [Terms of Use](https://tnaflixdownloader.site/terms-of-use): Terms and conditions
+- [Privacy Policy](https://tnaflixdownloader.site/privacy-policy): How we handle user data
+
+## API
+
+- POST /api/extract: Accepts a JSON body with a `url` field, returns video title, duration, and available download formats.
+
+## Legal
+
+This tool is for personal use only. Users are responsible for complying with applicable copyright laws. We do not host or store any video content.

@@ -3,3 +3,4 @@ Allow: /
 Disallow: /api/
 
 Sitemap: https://tnaflixdownloader.site/sitemap.xml
+Llms-txt: https://tnaflixdownloader.site/llms.txt
